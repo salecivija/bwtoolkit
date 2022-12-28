@@ -2,16 +2,12 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 import urllib.request
-import ssl
-
-ssl._create_default_https_context = ssl._create_unverified_context
-
 
 # List of predefined zip files to download
-zip_files = ['bw-stats.zip', 'hangar_tools.zip', 'bwmods.zip']
+zip_files = ['file1.zip', 'file2.zip', 'file3.zip']
 
 # Default destination folder path
-default_path = r'C:/Games/World_of_Tanks'
+default_path = r'C:\Games\World_of_Tanks'
 
 # Create the main window
 window = tk.Tk()
@@ -43,7 +39,7 @@ def download():
     path = path_label.cget("text")
     for i, file in enumerate(zip_files):
         if checkboxes[i].get() == 1:
-            url = "https://drive.google.com/drive/folders/1KdzIWjUAk5Y3e8_PlN9EEquDd6DOf3JQ?usp=sharing" + file
+            url = "https://www.blackwot.org/downloads/" + file
             urllib.request.urlretrieve(url, os.path.join(path, file))
 
 download_button = tk.Button(text="Download", command=download)
